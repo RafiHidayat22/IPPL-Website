@@ -1,0 +1,32 @@
+.header{
+    display: flex;
+    justify-content: space-between;
+    width: 100vw;    
+    height: 5rem;
+    background-color: #6C4E31;
+}
+
+.logo{
+
+    width: 8rem;
+    height: 8rem;
+    padding-left: 1rem;
+}
+
+.header-menu{
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+    color: black;
+    align-items: center;
+    padding-right: 2rem;
+    font-size: 18px;
+    font-weight: 600;
+
+}
+
+
+.header-menu>li:hover{
+    cursor: pointer;
+    color: white;
+}
