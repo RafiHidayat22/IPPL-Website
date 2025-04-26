@@ -6,6 +6,8 @@
     width: 100%; /* Use 100% instead of 100vw to avoid horizontal scrollbar */
     padding: 1rem;
     background-color: #6C4E31;
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
   }
   
   .footer-left {

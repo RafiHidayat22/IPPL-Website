@@ -4,6 +4,8 @@
     width: 100vw;    
     height: 5rem;
     background-color: #6C4E31;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
 }
 
 .logo{
@@ -25,6 +27,10 @@
 
 }
 
+.LogIn, .home-btn{
+    color: inherit; /* supaya warnanya ikut warna parent (li atau header) */
+    text-decoration: none; /* hilangin garis bawah */
+}
 
 .header-menu>li:hover{
     cursor: pointer;

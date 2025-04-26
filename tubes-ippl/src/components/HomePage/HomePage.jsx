@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import Responsive from '../../assets/responsive'
 import Header from '../Header/Header'
 import Footer from '../Footer/Footer'
@@ -107,7 +108,9 @@ const HomePage = () => {
                             <li>Tur video dokumentasi tempat-tempat bersejarah</li>
                             <li>Rekomendasi perjalanan budaya bagi wisatawan yang ingin mengenal lebih dalam budaya setempat</li>
                             </ul>
-                            <button className="content5-btn">Pelajari Selengkapnya</button>
+                            <Link to="/jelajah">
+                                <button className="content5-btn">Pelajari Selengkapnya</button>
+                            </Link>
                         </span>
                     </main>
 
