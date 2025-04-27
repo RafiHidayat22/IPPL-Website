@@ -5,6 +5,7 @@ import Jelajah from './components/JelajahWarisanBudaya/Jelajah';
 import Edukasi from './components/EdukasiWarisanBudaya/Edukasi';
 import Katalog from './components/KatalogWarisanBudaya/Katalog';
 import './App.css';
+import Forum from './components/Forum/Forum';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route path="/jelajah" element={<Jelajah />} />
           <Route path="/katalog" element={<Katalog />} />
           <Route path="/edukasi" element={<Edukasi />} />
+          <Route path="/forum" element={<Forum />} />
         </Routes>
       </div>
     </Router>

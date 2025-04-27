@@ -128,7 +128,9 @@ const HomePage = () => {
                             <p>
                             Gabung Komunitas Budaya Kami Untuk Membantu Melestarikan Kebudayaan Barlingmascakep
                             </p>
-                            <button className="content6-btn">Pelajari Selengkapnya</button>
+                            <Link to="/forum">
+                                <button className="content6-btn">Pelajari Selengkapnya</button>
+                            </Link>
                         </span>
                     </main>
                 <Footer/>   

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './AuthForm.css';
 
-const AuthForm = () => {
+const AuthForm = ({ onLogin }) => {
   const [isLogin, setIsLogin] = useState(true);
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
@@ -32,44 +32,45 @@ const AuthForm = () => {
 
   const validateForm = () => {
     const newErrors = {};
-    
+
     if (!formData.email) {
       newErrors.email = 'Email is required';
     } else if (!/^\S+@\S+\.\S+$/.test(formData.email)) {
       newErrors.email = 'Email is invalid';
     }
-    
+
     if (!formData.password) {
       newErrors.password = 'Password is required';
     } else if (formData.password.length < 6) {
       newErrors.password = 'Password must be at least 6 characters';
     }
-    
+
     if (!isLogin) {
       if (!formData.nama) {
         newErrors.nama = 'Full name is required';
       }
-      
+
       if (formData.password !== formData.confirmPassword) {
         newErrors.confirmPassword = 'Passwords do not match';
       }
-      
+
       if (!formData.agreeTerms) {
         newErrors.agreeTerms = 'You must agree to the terms';
       }
     }
-    
+
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    
+
     if (!validateForm()) return;
-    
+
     if (isLogin) {
       console.log('Login submitted:', { email: formData.email, password: formData.password });
+      onLogin(); // Panggil onLogin jika login berhasil
     } else {
       console.log('Register submitted:', {
         nama: formData.nama,
