@@ -1,0 +1,35 @@
+.options-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+    max-width: 600px;
+    margin: 2rem 0;
+  }
+  
+  .option-button {
+    padding: 1rem;
+    background-color: rgba(255, 255, 255, 0.2);
+    border: 2px solid white;
+    border-radius: 8px;
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: left;
+  }
+  
+  .option-button:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+  }
+  
+  .option-button.selected {
+    background-color: white;
+    color: #F0BB78;
+    font-weight: bold;
+  }
+  
+  .quizchallenge-button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }

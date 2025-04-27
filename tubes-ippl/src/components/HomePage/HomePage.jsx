@@ -89,7 +89,9 @@ const HomePage = () => {
                             <li>Kuis dan permainan interaktif tentang warisan budaya  </li>
                             <li>Tantangan budaya, seperti membuat video singkat tentang tradisi daerah</li>
                             </ul>
-                            <button className="content4-btn">Pelajari Selengkapnya</button>
+                            <Link to="/quizchallenge">
+                                <button className="content4-btn">Pelajari Selengkapnya</button>
+                            </Link>                          
                         </span>
                         <span className='content4-right'> 
                             <img src={gambar4} alt="gambar wayang" className='img4' />
