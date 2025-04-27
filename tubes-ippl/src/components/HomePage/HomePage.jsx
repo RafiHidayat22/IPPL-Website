@@ -46,7 +46,9 @@ const HomePage = () => {
                             <li>Adat istiadat</li>
                             <li>Bahasa daerah</li>
                             </ul>
-                            <button className="content2-btn">Pelajari Selengkapnya</button>
+                            <Link to="/katalog">
+                                <button className="content2-btn">Pelajari Selengkapnya</button>
+                            </Link>                          
                         </span>
                         <span className='content2-right'> 
                             <img src={gambar2} alt="gambar wayang" className='img2' />
@@ -71,7 +73,9 @@ const HomePage = () => {
                             <li>Video seni pertunjukan</li>
                             <li>Dokumen sejarah warisan budaya</li>
                             </ul>
-                            <button className="content3-btn">Pelajari Selengkapnya</button>
+                            <Link to="/edukasi">
+                                <button className="content3-btn">Pelajari Selengkapnya</button>
+                            </Link>    
                         </span>
                     </main>
 
