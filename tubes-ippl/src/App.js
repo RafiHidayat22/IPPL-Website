@@ -9,6 +9,8 @@ import Quiz from './components/InteraktifBudaya/QuizChallenge/Quiz';
 import Challenge from './components/InteraktifBudaya/QuizChallenge/Challenge'
 import './App.css';
 import Forum from './components/Forum/Forum';
+import Admin from './components/Admin/admin';
+import KelolaForum from './components/Admin/kelolaForum';
 
 function App() {
   return (
@@ -24,6 +26,8 @@ function App() {
           <Route path="/quizchallenge" element={<QuizChallenge />} />
           <Route path="/quiz" element={<Quiz />} />
           <Route path="/challenge" element={<Challenge />} />
+          <Route path="/admin" element={<Admin />} />
+          <Route path="/kelForum" element={<KelolaForum />} />
         </Routes>
       </div>
     </Router>
