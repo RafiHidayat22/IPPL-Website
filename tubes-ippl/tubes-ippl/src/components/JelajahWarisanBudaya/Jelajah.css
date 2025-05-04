@@ -1,0 +1,143 @@
+* { 
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  html, body {
+    overflow-x: hidden;
+    width: 100%;
+  }
+  
+  .main-jelajah {
+    background-color: #ffdbb5;
+  }
+  
+  .layout {
+    background-color: #ffeac5;
+    margin: 30px;
+    border-radius: 20px;
+    padding: 20px;
+  }
+  
+  /* Desktop default */
+  .section1 {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 20px;
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: left;
+  }
+  
+  .section3, .section4, .section5, .section6, .section7, .section8 {
+    margin: 70px;
+  }
+  
+  .section1-left {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .section1-left > h1 {
+    font-size: 4rem;
+    margin-bottom: 40px;
+  }
+  
+  .img1-jelajah {
+    width: 30rem;
+    height: 30rem;
+    padding-top: 20px;
+    object-fit: cover;
+  }
+  
+  .img2-jelajah {
+    width: 60rem;
+    height: 30rem;
+    object-fit: cover;
+  }
+
+  .maps-button {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 8px 20px;
+    background-color: #6C4E31;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 16px;
+    transition: background-color 0.3s;
+  }
+  
+  .maps-button:hover {
+    background-color: #F7AD45;
+  }
+  
+  
+  /* ====================== RESPONSIVE ====================== */
+  
+  /* Tablet Styles */
+  @media (max-width: 992px) {
+    .section1 {
+      flex-direction: column;
+      align-items: center;
+      max-width: 700px;
+      padding: 15px;
+    }
+  
+    .img1-jelajah, .img2-jelajah {
+      width: 100%;
+      height: auto;
+      max-width: 30rem;
+    }
+    
+    .section3, .section4 {
+      margin: 40px;
+    }
+    
+    .section1-left > h1 {
+      font-size: 3rem;
+      text-align: center;
+    }
+  }
+  
+  /* Mobile Styles */
+  @media (max-width: 767px) {
+    .section1 {
+      flex-direction: column;
+      text-align: center;
+      padding: 15px;
+      max-width: 100%;
+    }
+  
+    .img1-jelajah, .img2-jelajah {
+      width: 100%;
+      max-width: 20rem;
+      height: auto;
+      margin: 0 auto;
+    }
+  
+    .section3, .section4 {
+      margin: 30px 20px;
+    }
+  
+    .section1-left > h1 {
+      font-size: 2.5rem;
+    }
+  }
+  
+  /* Smaller Mobile */
+  @media (max-width: 480px) {
+    .img1-jelajah, .img2-jelajah {
+      max-width: 15rem;
+    }
+  
+    .section1-left > h1 {
+      font-size: 2rem;
+    }
+  }
+  

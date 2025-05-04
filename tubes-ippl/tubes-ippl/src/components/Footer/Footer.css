@@ -1,0 +1,60 @@
+.footer {
+    display: flex;
+    flex-direction: column; /* Stacked on mobile by default */
+    justify-content: center;
+    align-items: center;
+    width: 100%; /* Use 100% instead of 100vw to avoid horizontal scrollbar */
+    padding: 1rem;
+    background-color: #6C4E31;
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
+  }
+  
+  .footer-left {
+    text-align: center;
+    font-size: medium;
+    font-weight: 800;
+    margin-bottom: 1rem; /* Space between elements when stacked */
+  }
+  
+  .footer-menu {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap; /* Allow menu items to wrap on small screens */
+    justify-content: center;
+    gap: 1rem;
+    color: black;
+    font-size: 16px;
+    font-weight: 600;
+    padding: 0; /* Remove default padding */
+  }
+  
+  .footer-menu > li:hover {
+    cursor: pointer;
+    color: white;
+  }
+  
+  /* Tablet and desktop styles */
+  @media (min-width: 768px) {
+    .footer {
+      flex-direction: row;
+      justify-content: space-between;
+      height: 5rem;
+      padding: 0;
+    }
+    
+    .footer-left {
+      text-align: left;
+      margin-bottom: 0;
+      padding-left: 30px;
+      padding-top: 0;
+      display: flex;
+      align-items: center;
+    }
+    
+    .footer-menu {
+      padding-right: 2rem;
+      font-size: 18px;
+      gap: 2rem;
+    }
+  }

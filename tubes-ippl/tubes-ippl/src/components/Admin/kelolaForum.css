@@ -1,0 +1,110 @@
+html, body {
+  height: 100%;
+  margin: 0; /* Ensure no default margin */
+}
+
+.main-kelola-forum {
+  min-height: 100vh; /* Full height viewport */
+  display: flex;
+  flex-direction: column;
+  background-color: #ffdbb5;
+}
+
+.forum-container {
+  flex: 1; /* Fill available space */
+  margin: 30px;
+  padding: 20px;
+  background-color: #fffbe9;
+  border-radius: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.forum-container h2 {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.forum-post {
+  padding: 20px;
+  border-bottom: 1px solid #ccc;
+}
+
+.forum-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.btn-delete {
+  background-color: #d9534f;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.btn-delete:hover {
+  background-color: #c9302c;
+}
+
+.forum-meta {
+  font-size: 0.9rem;
+  color: #555;
+  margin: 10px 0;
+}
+
+.forum-content {
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #333;
+}
+
+.menu-bar {
+  display: flex;
+  gap: 10px;
+  padding: 10px 0;
+  margin-left: 50px;
+}
+
+.btn {
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  border-radius: 4px;
+}
+
+.btn.green {
+  background-color: green;
+  color: white;
+}
+
+.btn.white {
+  background-color: white;
+  color: black;
+  border: 1px solid #ccc;
+}
+
+/* Optional: Customize table styles if you plan to use tables in the forum */
+.user-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #fffce8;
+}
+
+.user-table th, .user-table td {
+  border: 1px solid #ccc;
+  padding: 10px;
+  text-align: left;
+}
+
+.user-table th {
+  background-color: #fffad0;
+}
+
+.kelolaUser {
+  color: inherit; /* Follow parent color */
+  text-decoration: none; /* Remove underline */
+}

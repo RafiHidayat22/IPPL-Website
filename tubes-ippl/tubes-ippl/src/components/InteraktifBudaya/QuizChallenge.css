@@ -1,0 +1,89 @@
+/* --- Layout global --- */
+.page-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #FFD8B1; /* Warna peach dasar */
+}
+  
+.content-wrap {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+}
+  
+/* --- Quiz Challenge Content --- */
+.quizchallenge-container {
+    background-color: #FFEAC3; /* Box dalam warna krem */
+    border-radius: 30px; /* Mengubah menjadi lebih bulat */
+    padding: 3rem 2rem;
+    width: 100%;
+    max-width: 1200px;
+    text-align: center;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+  
+.quizchallenge-title {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    color: #333;
+}
+  
+/* Box utama Quiz & Challenge */
+.quizchallenge-box {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    width: 100%;
+    margin-top: 2rem;
+    overflow: hidden;
+    border-radius: 20px; /* Menambahkan border-radius agar lebih bulat */
+}
+
+/* Setiap sisi */
+.quizchallenge-card {
+    flex: 1;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    overflow: hidden;
+    margin: 0 1rem; /* Menambahkan jarak antar card (left dan right margin) */
+}
+  
+.quiz-side {
+    background-color: #F0BB78;
+    color: white;
+    border-radius: 20px;
+}
+  
+.challenge-side {
+    background-color: #543A14;
+    color: white;
+    border-radius: 20px;
+}
+  
+.video-title {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+  
+.quizchallenge-button {
+    margin-top: 1rem;
+    padding: 10px 20px;
+    background: white;
+    color: #333;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+  
+.quizchallenge-button:hover {
+    background: #ddd;
+}

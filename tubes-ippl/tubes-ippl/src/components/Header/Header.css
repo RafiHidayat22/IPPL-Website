@@ -1,0 +1,38 @@
+.header{
+    display: flex;
+    justify-content: space-between;
+    width: 100vw;    
+    height: 5rem;
+    background-color: #6C4E31;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+.logo{
+
+    width: 8rem;
+    height: 8rem;
+    padding-left: 1rem;
+}
+
+.header-menu{
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+    color: black;
+    align-items: center;
+    padding-right: 2rem;
+    font-size: 18px;
+    font-weight: 600;
+
+}
+
+.LogIn, .home-btn{
+    color: inherit; /* supaya warnanya ikut warna parent (li atau header) */
+    text-decoration: none; /* hilangin garis bawah */
+}
+
+.header-menu>li:hover{
+    cursor: pointer;
+    color: #F7AD45;
+}
