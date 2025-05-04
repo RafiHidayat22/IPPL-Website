@@ -4,12 +4,10 @@ import './AuthForm.css';
 const AuthForm = ({ onLogin }) => {
   const [isLogin, setIsLogin] = useState(true);
   const [showPassword, setShowPassword] = useState(false);
-  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [formData, setFormData] = useState({
     nama: '',
     email: '',
     password: '',
-    confirmPassword: '',
     agreeTerms: false
   });
   const [errors, setErrors] = useState({});
@@ -50,10 +48,6 @@ const AuthForm = ({ onLogin }) => {
         newErrors.nama = 'Full name is required';
       }
 
-      if (formData.password !== formData.confirmPassword) {
-        newErrors.confirmPassword = 'Passwords do not match';
-      }
-
       if (!formData.agreeTerms) {
         newErrors.agreeTerms = 'You must agree to the terms';
       }
@@ -70,7 +64,7 @@ const AuthForm = ({ onLogin }) => {
 
     if (isLogin) {
       console.log('Login submitted:', { email: formData.email, password: formData.password });
-      onLogin(); // Panggil onLogin jika login berhasil
+      onLogin();
     } else {
       console.log('Register submitted:', {
         nama: formData.nama,
@@ -82,7 +76,6 @@ const AuthForm = ({ onLogin }) => {
         nama: '',
         email: '',
         password: '',
-        confirmPassword: '',
         agreeTerms: false
       });
     }
@@ -141,27 +134,6 @@ const AuthForm = ({ onLogin }) => {
                     />
                   </div>
                   {errors.password && <span className="error-msg">{errors.password}</span>}
-                </div>
-
-                <div className="form-group">
-                  <label htmlFor="confirmPassword">Konfirmasi Kata Sandi</label>
-                  <div className="input-wrapper">
-                    <input
-                      type={showConfirmPassword ? "text" : "password"}
-                      id="confirmPassword"
-                      placeholder="Ketik ulang kata sandi"
-                      value={formData.confirmPassword}
-                      onChange={handleChange}
-                      className={errors.confirmPassword ? 'error' : ''}
-                    />
-                    <img
-                      src={showConfirmPassword ? "/eye.svg" : "/eye-crossed.svg"}
-                      alt="toggle visibility"
-                      className="toggle-icon"
-                      onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                    />
-                  </div>
-                  {errors.confirmPassword && <span className="error-msg">{errors.confirmPassword}</span>}
                 </div>
 
                 <div className="terms-group">
