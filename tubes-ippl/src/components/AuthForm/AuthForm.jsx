@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';  // Import useNavigate
 import './AuthForm.css';
 
 const AuthForm = ({ onLogin }) => {
+  const navigate = useNavigate(); // Initialize useNavigate
   const [isLogin, setIsLogin] = useState(true);
   const [showPassword, setShowPassword] = useState(false);
   const [formData, setFormData] = useState({
@@ -11,20 +13,27 @@ const AuthForm = ({ onLogin }) => {
     agreeTerms: false
   });
   const [errors, setErrors] = useState({});
+  const [isLoggedIn, setIsLoggedIn] = useState(!!localStorage.getItem('token'));
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  useEffect(() => {
+    setIsLoggedIn(!!localStorage.getItem('token'));
+  }, []);
 
   const toggleForm = () => {
-    setIsLogin(!isLogin);
+    setIsLogin((prevIsLogin) => !prevIsLogin);
     setErrors({});
   };
 
   const handleChange = (e) => {
     const { id, value, type, checked } = e.target;
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
       [id]: type === 'checkbox' ? checked : value
     }));
+
     if (errors[id]) {
-      setErrors(prev => ({ ...prev, [id]: '' }));
+      setErrors((prev) => ({ ...prev, [id]: '' }));
     }
   };
 
@@ -57,34 +66,76 @@ const AuthForm = ({ onLogin }) => {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (!validateForm()) return;
 
-    if (isLogin) {
-      console.log('Login submitted:', { email: formData.email, password: formData.password });
-      onLogin();
-    } else {
-      console.log('Register submitted:', {
-        nama: formData.nama,
-        email: formData.email,
-        password: formData.password
+    setIsSubmitting(true);
+
+    const endpoint = isLogin
+      ? 'http://localhost:8080/api/auth/login'
+      : 'http://localhost:8080/api/auth/register';
+
+    const payload = isLogin
+      ? { email: formData.email, password: formData.password }
+      : {
+          name: formData.nama,
+          email: formData.email,
+          password: formData.password
+        };
+
+    try {
+      const response = await fetch(endpoint, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
       });
-      setIsLogin(true);
-      setFormData({
-        nama: '',
-        email: '',
-        password: '',
-        agreeTerms: false
-      });
+
+      const data = await response.json();
+
+      if (response.ok && data.token) {
+        localStorage.setItem('token', data.token);
+        localStorage.setItem('userId', data.userId); // <- simpan userId juga
+        setIsLoggedIn(true);
+        onLogin && onLogin();
+        navigate('/');
+      }
+       else {
+        alert(data.error || 'Terjadi kesalahan. Silakan coba lagi.');
+      }
+    } catch (err) {
+      console.error(err);
+      alert('Gagal menghubungi server.');
+    } finally {
+      setIsSubmitting(false);
     }
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    setIsLoggedIn(false);
+    setFormData({
+      nama: '',
+      email: '',
+      password: '',
+      agreeTerms: false
+    });
+    setIsLogin(true);
+    alert('Berhasil logout');
   };
 
   return (
     <div className="auth-container">
       <div className="auth-card">
-        {!isLogin && (
+        {isLoggedIn ? (
+          <div className="logout-box">
+            <h2>Anda sudah login</h2>
+            <button type="button" className="submit-btn" onClick={handleLogout}>
+              Logout
+            </button>
+          </div>
+        ) : !isLogin ? (
           <div className="register-box">
             <div className="form-wrapper">
               <h2>Registrasi</h2>
@@ -119,7 +170,7 @@ const AuthForm = ({ onLogin }) => {
                   <label htmlFor="password">Kata Sandi</label>
                   <div className="input-wrapper">
                     <input
-                      type={showPassword ? "text" : "password"}
+                      type={showPassword ? 'text' : 'password'}
                       id="password"
                       placeholder="Minimal 6 karakter"
                       value={formData.password}
@@ -127,7 +178,7 @@ const AuthForm = ({ onLogin }) => {
                       className={errors.password ? 'error' : ''}
                     />
                     <img
-                      src={showPassword ? "/eye.svg" : "/eye-crossed.svg"}
+                      src={showPassword ? '/eye.svg' : '/eye-crossed.svg'}
                       alt="toggle visibility"
                       className="toggle-icon"
                       onClick={() => setShowPassword(!showPassword)}
@@ -150,7 +201,9 @@ const AuthForm = ({ onLogin }) => {
                   {errors.agreeTerms && <span className="error-msg">{errors.agreeTerms}</span>}
                 </div>
 
-                <button type="submit" className="submit-btn">Daftar Sekarang</button>
+                <button type="submit" className="submit-btn" disabled={isSubmitting}>
+                  {isSubmitting ? 'Memproses...' : 'Daftar Sekarang'}
+                </button>
 
                 <div className="login-link">
                   Sudah punya akun? <button type="button" onClick={toggleForm}>Masuk di sini</button>
@@ -158,9 +211,7 @@ const AuthForm = ({ onLogin }) => {
               </form>
             </div>
           </div>
-        )}
-
-        {isLogin && (
+        ) : (
           <div className="login-box">
             <div className="form-wrapper">
               <h2>Masuk ke Akun Anda</h2>
@@ -182,7 +233,7 @@ const AuthForm = ({ onLogin }) => {
                   <label htmlFor="password">Kata Sandi</label>
                   <div className="input-wrapper">
                     <input
-                      type={showPassword ? "text" : "password"}
+                      type={showPassword ? 'text' : 'password'}
                       id="password"
                       placeholder="Masukkan kata sandi Anda"
                       value={formData.password}
@@ -190,7 +241,7 @@ const AuthForm = ({ onLogin }) => {
                       className={errors.password ? 'error' : ''}
                     />
                     <img
-                      src={showPassword ? "/eye.svg" : "/eye-crossed.svg"}
+                      src={showPassword ? '/eye.svg' : '/eye-crossed.svg'}
                       alt="toggle visibility"
                       className="toggle-icon"
                       onClick={() => setShowPassword(!showPassword)}
@@ -199,7 +250,9 @@ const AuthForm = ({ onLogin }) => {
                   {errors.password && <span className="error-msg">{errors.password}</span>}
                 </div>
 
-                <button type="submit" className="submit-btn">Masuk</button>
+                <button type="submit" className="submit-btn" disabled={isSubmitting}>
+                  {isSubmitting ? 'Memproses...' : 'Masuk'}
+                </button>
 
                 <div className="register-link">
                   Belum punya akun? <button type="button" onClick={toggleForm}>Daftar di sini</button>

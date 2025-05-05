@@ -88,6 +88,18 @@ body {
     align-self: flex-end;
     width: 150px;
   }
+
+  .logout-btn{
+    background-color: #fb923c;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    align-self: flex-end;
+    width: 150px;
+  }
   
   .button:hover {
     background-color: #f97316;

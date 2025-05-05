@@ -1,11 +1,12 @@
 import React from 'react';
 
-const Post = ({ author, image, content }) => {
+const Post = ({ title, authorName, content, imageUrl }) => {
   return (
     <div className="post-card">
-      <div className="post-author">{author}</div>
-      {image && <img src={image} alt="Post" className="post-image" />}
-      <div className="post-content">{content}</div>
+      <h3 className="post-title">{title}</h3>
+      <div className="post-author">Oleh: {authorName || 'Anonim'}</div>
+      {imageUrl && <img src={imageUrl} alt="Post" className="post-image" />}
+      <p className="post-content">{content}</p>
     </div>
   );
 };
